@@ -13,7 +13,7 @@ const LINE_THROUGH = "lineThrough"
 let LIST, id;
 
 // get item from localstorage
-let data = localStorage.getItem("TODO")
+let data = localStorage.getItem("TODO");
 
 //see if data is not empty
 if(data){
@@ -30,6 +30,12 @@ function loadList(array){
         addToDo(item.name, item.id, item.done, item.trash);
     })
 }
+// clear the local storage
+clear.addEventListener("click", function(){
+    localStorage.clear();
+    location.reload();
+});
+
 //Show the date
 const options = {weekday : "long", month: "short", day:"numeric"};
 const today = new Date();
@@ -46,7 +52,7 @@ function addToDo(toDo, id, done, trash){
     const item = `<li class = "item">
                     <i class="fa ${DONE} co" job="complete" id="${id}"></i>
                     <p class="text ${LINE}">${toDo} </p>
-                    <i class="de fa fa-trash-o" job="delete" id="${id}"></i>
+                    <i class="fa fa-trash-o de" job="delete" id="${id}"></i>
                 </li>`
     
     const position = "beforeend"
